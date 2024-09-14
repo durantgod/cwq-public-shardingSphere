@@ -41,7 +41,7 @@ spring:
       sql.show: true
     sharding:
       tables:
-        # 订单表基础表
+        # 订单表基础表，logic-table-name 逻辑表名
         t_ent_order:
           # 真实表
           actualDataNodes: ds$->{0..3}.t_ent_order
