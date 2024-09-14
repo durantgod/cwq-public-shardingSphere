@@ -3,7 +3,6 @@ shardingSphere 分库分表实战项目，在开源项目的基础上新增了�
 
 ps: 代码第一版是从 https://github.com/makemyownlife/shardingsphere-jdbc-demo.git fork 过来并做了修改的。
 
-![](https://javayong.cn/pics/shipinhao/gongzhonghaonew.png)
 
 在笔者心中，**消息队列**，**缓存**，**分库分表**是高并发解决方案三剑客。
 
