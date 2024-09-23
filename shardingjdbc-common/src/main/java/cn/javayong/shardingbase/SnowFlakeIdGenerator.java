@@ -16,6 +16,9 @@ public class SnowFlakeIdGenerator {
     //最大序号
     private final static int MAX_SEQ = 4095;
 
+    /**
+     * 基因ID，二进制10位，最大表示0-1023
+     */
     private final static long WORKERID_BITS = 10L;
 
     private final static long SEQUENCE_BITS = 12L;
@@ -56,6 +59,7 @@ public class SnowFlakeIdGenerator {
         Long id = SnowFlakeIdGenerator.getUniqueId(1023, 12);
         String s = Long.toBinaryString(id);
         System.out.println(s);
+        System.out.println(id);
     }
 
 }

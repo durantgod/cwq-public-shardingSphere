@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -36,7 +37,7 @@ public class OrderService {
 
         //保存订单基本信息
         TEntOrder tEntOrder = new TEntOrder();
-        Long orderId = redisIdGeneratorService.createUniqueId(String.valueOf(entId));
+        Long orderId = redisIdGeneratorService.createUniqueId(String.valueOf(entId)).orElseThrow(() -> new RuntimeException("ID获取异常，请重试"));
         tEntOrder.setId(orderId);
         tEntOrder.setRegionCode(regionCode);
         tEntOrder.setAmount(new BigDecimal(12.0));
@@ -46,7 +47,7 @@ public class OrderService {
 
         //保存订单详情
         TEntOrderDetail tEntOrderDetail = new TEntOrderDetail();
-        Long detailId = redisIdGeneratorService.createUniqueId(String.valueOf(entId));
+        Long detailId = redisIdGeneratorService.createUniqueId(String.valueOf(entId)).orElseThrow(() -> new RuntimeException("ID获取异常，请重试"));;
         tEntOrderDetail.setId(detailId);
         tEntOrderDetail.setAddress("湖北武汉东西湖区");
         tEntOrderDetail.setOrderId(orderId);
@@ -59,7 +60,7 @@ public class OrderService {
         {
             //保存条目 1
             TEntOrderItem item1 = new TEntOrderItem();
-            Long itemId = redisIdGeneratorService.createUniqueId(String.valueOf(entId));
+            Long itemId = redisIdGeneratorService.createUniqueId(String.valueOf(entId)).orElseThrow(() -> new RuntimeException("ID获取异常，请重试"));;
             item1.setId(itemId);
             item1.setEntId(entId);
             item1.setOrderId(orderId);
@@ -69,7 +70,7 @@ public class OrderService {
             orderMapper.saveOrderItem(item1);
             //保存条目 2
             TEntOrderItem item2 = new TEntOrderItem();
-            Long itemId2 = redisIdGeneratorService.createUniqueId(String.valueOf(entId));
+            Long itemId2 = redisIdGeneratorService.createUniqueId(String.valueOf(entId)).orElseThrow(() -> new RuntimeException("ID获取异常，请重试"));;
             item2.setId(itemId2);
             item2.setEntId(entId);
             item2.setRegionCode("BJ");
@@ -79,6 +80,15 @@ public class OrderService {
             orderMapper.saveOrderItem(item2);
         }
         return orderId;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(testGetId().orElseThrow(() -> new RuntimeException("ID获取异常，请重试")));
+    }
+
+
+    public static Optional<Long> testGetId() {
+        return Optional.empty();
     }
 
 }

@@ -20,6 +20,13 @@ public class HashSlotAlgorithm implements ComplexKeysShardingAlgorithm {
 
     public final static Logger logger = LoggerFactory.getLogger(HashSlotAlgorithm.class);
 
+    /**
+     * 分片策略
+     *
+     * @param availableTargetNames available data sources or tables's names 发挥的是多少个库，ds0-3
+     * @param complexKeysShardingValue {@link ComplexKeysShardingValue} ex: ComplexKeysShardingValue(logicTableName=t_ent_order, columnNameAndShardingValuesMap={id=[674988670850883591]}, columnNameAndRangeValuesMap={})
+     * @return
+     */
     @Override
     public Collection<String> doSharding(Collection availableTargetNames, ComplexKeysShardingValue complexKeysShardingValue) {
         List<Integer> slotList = new ArrayList<>();

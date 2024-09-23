@@ -19,6 +19,13 @@ public class StringHashUtil {
 
     private final static String CHARSET = "UTF-8";
 
+    /**
+     * crc32做散列好处是速度快，效率高
+     * 缺点是碰撞概率大，需要做防碰撞处理，不能保证100%唯一
+     *
+     * @param value 分片字段值，比如部门ID，workId(基因ID)
+     * @return 返回hash值
+     */
     public static Integer hashSlot(String value) {
         try {
             CRC32 crc32 = new CRC32();
@@ -30,6 +37,10 @@ public class StringHashUtil {
             logger.error("hashSlot value:" + value, e);
             return null;
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(hashSlot("5"));
     }
 
     public static List<String> descartes(List<List<String>> collections) {

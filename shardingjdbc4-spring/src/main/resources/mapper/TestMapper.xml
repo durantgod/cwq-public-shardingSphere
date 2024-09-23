@@ -100,7 +100,7 @@
                     FROM
                     t_ent_order a , t_ent_order_detail b
                     where
-                    a.id = = #{id}
+                    a.id = #{id}
                     and
                     a.id = b.order_id
     </select>
