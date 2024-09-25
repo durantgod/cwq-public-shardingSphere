@@ -32,7 +32,7 @@ public class OrderService {
 
     @Transactional
     public Long save() {
-        Long entId = 5L;
+        Long entId =  (long) (Math.random() * 1213123223) + 1;
         String regionCode = "BJ";
 
         //保存订单基本信息

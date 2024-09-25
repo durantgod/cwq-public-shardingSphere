@@ -56,9 +56,7 @@ public class SnowFlakeIdGenerator {
     }
 
     public static void main(String[] args) {
-        Long id = SnowFlakeIdGenerator.getUniqueId(1023, 12);
-        String s = Long.toBinaryString(id);
-        System.out.println(s);
+        int id = getWorkerId(680376135508930570L);
         System.out.println(id);
     }
 

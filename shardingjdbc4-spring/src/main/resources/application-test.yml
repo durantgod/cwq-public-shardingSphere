@@ -38,7 +38,7 @@ spring:
         password: hhd@2023
     props:
       # 日志显示 SQL
-      sql.show: true
+      sql.show: false
     sharding:
       tables:
         # 订单表基础表，logic-table-name 逻辑表名
@@ -49,7 +49,7 @@ spring:
           databaseStrategy:
             complex:
               sharding-columns: id,ent_id
-              algorithm-class-name: cn.javayong.shardingjdbc4.spring.common.sharding.HashSlotAlgorithm
+              algorithm-class-name: cn.javayong.shardingjdbc4.spring.common.sharding.HashSlotAlgorithmDatabase
           # 分表策略
           tableStrategy:
             none:
@@ -61,12 +61,12 @@ spring:
           databaseStrategy:
             complex:
               sharding-columns: id,ent_id
-              algorithm-class-name: cn.javayong.shardingjdbc4.spring.common.sharding.HashSlotAlgorithm
+              algorithm-class-name: cn.javayong.shardingjdbc4.spring.common.sharding.HashSlotAlgorithmDatabase
           # 分表策略
           tableStrategy:
             complex:
               sharding-columns: id,ent_id
-              algorithm-class-name: cn.javayong.shardingjdbc4.spring.common.sharding.HashSlotAlgorithm
+              algorithm-class-name: cn.javayong.shardingjdbc4.spring.common.sharding.HashSlotAlgorithmTables
         # 订单详情表
         t_ent_order_detail:
           # 真实表
@@ -75,12 +75,12 @@ spring:
           databaseStrategy:
              complex:
                 sharding-columns: id,ent_id
-                algorithm-class-name: cn.javayong.shardingjdbc4.spring.common.sharding.HashSlotAlgorithm
+                algorithm-class-name: cn.javayong.shardingjdbc4.spring.common.sharding.HashSlotAlgorithmDatabase
           # 分表策略
           tableStrategy:
               complex:
                 sharding-columns: id,ent_id
-                algorithm-class-name: cn.javayong.shardingjdbc4.spring.common.sharding.HashSlotAlgorithm
+                algorithm-class-name: cn.javayong.shardingjdbc4.spring.common.sharding.HashSlotAlgorithmTables
       bindingTables:
         - t_ent_order,t_ent_order_detail
 
